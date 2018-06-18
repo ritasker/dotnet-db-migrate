@@ -1,11 +1,11 @@
 namespace db_migrate
 {
+    using DbUp.Engine;
+    
     using McMaster.Extensions.CommandLineUtils;
     
     using System;
     using System.ComponentModel.DataAnnotations;
-    using System.Data.Common;
-    using DbUp.Engine;
 
     [Command(Description = "A tool to deploy changes to SQL databases.")]
     [HelpOption("-h|--help")]
@@ -14,12 +14,13 @@ namespace db_migrate
         public static int Main(string[] args) => CommandLineApplication.Execute<Program>(args);
 
         [Required]
-        [Option(Description = "Required. The connection details for a database.")]
+        [ConnectionString]
+        [Argument(0, Description = "Required. The connection details for a database.")]
         private string ConnectionString { get; }
 
         [Option(Template = "-p|--provider",
-            Description = "Optional. The connection provider. Default: mssql.")]
-        [AllowedValues("mssql", "azure", "sqlite", "sqlce", "mysql", "postgres", "firebird", IgnoreCase = true)]
+            Description = "Optional. The connection provider. Default: mssql")]
+        [AllowedValues("mssql", "postgres", IgnoreCase = true)]
         private string Provider { get; } = "mssql";
 
         [Option(Template = "-s|--scripts",
@@ -31,12 +32,6 @@ namespace db_migrate
 
         private int OnExecute()
         {
-            if (!ValidateConnectionString(ConnectionString))
-            {
-                WriteError("An invalid connection string was provided.");
-                return 1;
-            }
-
             DbMigrator migrator = GetMigrator();
 
             if (EnsureDatabaseExists)
@@ -84,22 +79,6 @@ namespace db_migrate
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Error.WriteLine(message);
             Console.ResetColor();
-        }
-
-        private bool ValidateConnectionString(string connectionString)
-        {
-            var builder = new DbConnectionStringBuilder();
-
-            try
-            {
-                builder.ConnectionString = connectionString;
-            }
-            catch (ArgumentException)
-            {
-                return false;
-            }
-
-            return true;
         }
     }
 }
