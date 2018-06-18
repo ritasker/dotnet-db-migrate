@@ -7,6 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="dbup-postgresql" Version="4.1.0" />
+    <PackageReference Include="dbup-sqlserver" Version="4.1.0" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.2.4" />
   </ItemGroup>
 </Project>

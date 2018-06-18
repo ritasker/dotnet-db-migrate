@@ -37,7 +37,7 @@ namespace db_migrate
                 return 1;
             }
 
-            DbMigrator migrator = new PostgresMigrator(ConnectionString);
+            DbMigrator migrator = GetMigrator();
 
             if (EnsureDatabaseExists)
             {
@@ -66,6 +66,17 @@ namespace db_migrate
             Console.WriteLine("Success!");
             Console.ResetColor();
             return 0;
+        }
+
+        private DbMigrator GetMigrator()
+        {
+            switch (Provider.ToLower())
+            {
+                case "postgres":
+                    return new PostgresMigrator(ConnectionString);
+                default:
+                    return new MSSqlMigrator(ConnectionString);
+            }
         }
 
         private static void WriteError(string message)
