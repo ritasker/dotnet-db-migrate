@@ -1,0 +1,5 @@
+CREATE TABLE contacts(
+  id UNIQUEIDENTIFIER PRIMARY KEY,
+  name NVARCHAR,
+  email NVARCHAR
+);
