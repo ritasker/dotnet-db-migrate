@@ -13,22 +13,6 @@ environment:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   
-dotnet_csproj:
-  patch: true
-  file: '**\*.csproj'
-  version: '{version}'
-  package_version: '{version}'
-  assembly_version: '{version}'
-  file_version: '{version}'
-  informational_version: '{version}'
-  
 build:
   project: ./src/db-migrate.csproj
-  publish_nuget: true
-
-deploy:
-  provider: NuGet
-  on:
-    branch: release
-  api_key:
-    secure: sVEOMjXCoYQU0B6tbPn7p/tEMMWqHXp3t78YZqRNgEABqKoveA8xsD4M5gMcqfSF
+  publish_nuget: false

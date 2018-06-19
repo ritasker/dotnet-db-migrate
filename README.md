@@ -1,5 +1,8 @@
 # Db-Migrate
 
+[![Build status](https://ci.appveyor.com/api/projects/status/51x073rgmxhyopaf/branch/master?svg=true)](https://ci.appveyor.com/project/ritasker/db-migrate/branch/master)
+[![NuGet](https://img.shields.io/nuget/v/db-migrate.svg)](https://www.nuget.org/packages/db-migrate/)
+
 A [.NET Core Global Tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) to deploy changes to SQL databases using [DbUp](https://github.com/DbUp/DbUp).
 
 ## Installation
