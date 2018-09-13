@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <ToolCommandName>db-migrate</ToolCommandName>
+    <ToolCommandName>dotnet-db-migrate</ToolCommandName>
     <PackAsTool>true</PackAsTool>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -16,6 +16,6 @@
   <ItemGroup>
     <PackageReference Include="dbup-postgresql" Version="4.1.0" />
     <PackageReference Include="dbup-sqlserver" Version="4.1.0" />
-    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.2.4" />
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.2.5" />
   </ItemGroup>
 </Project>

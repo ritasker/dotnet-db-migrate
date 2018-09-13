@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "db-migrate", "src\db-migrate.csproj", "{A0140BBB-69BE-41FB-B19A-03FCB1D0557E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-db-migrate", "src\dotnet-db-migrate.csproj", "{A0140BBB-69BE-41FB-B19A-03FCB1D0557E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
