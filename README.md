@@ -1,6 +1,6 @@
 # dotnet-db-migrate
 
-[![Build status](https://ci.appveyor.com/api/projects/status/51x073rgmxhyopaf/branch/master?svg=true)](https://ci.appveyor.com/project/ritasker/dotnet-db-migrate/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/1rjkqrumqq52yfdj/branch/master?svg=true)](https://ci.appveyor.com/project/ritasker/dotnet-db-migrate/branch/master)
 [![NuGet](https://img.shields.io/nuget/v/dotnet-db-migrate.svg)](https://www.nuget.org/packages/dotnet-db-migrate/)
 [![NuGet](https://img.shields.io/myget/ritasker/v/dotnet-db-migrate.svg)](https://www.myget.org/feed/ritasker/package/nuget/dotnet-db-migrate/)
 
