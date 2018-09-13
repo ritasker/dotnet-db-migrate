@@ -1,18 +1,58 @@
 image: Ubuntu
-version: '1.0.{build}'
 configuration: Release
-skip_branch_with_pr: true
-
 pull_requests:
   do_not_increment_build_number: true
   
-nuget:
-  disable_publish_on_pr: true
-
-environment:  
+environment:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   
-build:
-  project: ./src/db-migrate.csproj
-  publish_nuget: false
+for:
+- 
+  branches:
+    only:
+    - master
+
+  version: '1.0.0'
+
+  dotnet_csproj:
+    patch: true
+    file: '**\*.csproj'
+    version: '{version}'
+    package_version: '{version}'
+
+  build:
+    project: ./src/dotnet-db-migrate.csproj
+    publish_nuget: true
+    
+  deploy:
+    provider: NuGet
+    server: https://api.nuget.org/v3/index.json
+    api_key:
+      secure: LSDgU4mPwAAgPEwFB2CzDeBH7TzW4gGSAkCHHP69jZL7Udb2f6l2D0qLJNzjbGPI
+-
+  branches:
+    only:
+    - dev
+
+  version: '1.0.0-dev.{build}'
+
+  dotnet_csproj:
+    patch: true
+    file: '**\*.csproj'
+    version: '{version}'
+    package_version: '{version}'
+
+  build:
+    project: ./src/dotnet-db-migrate.csproj
+    publish_nuget: true
+
+  deploy:
+    provider: NuGet
+    server: https://www.myget.org/F/ritasker/api/v2/package
+    api_key:
+      secure: BT8YoYrMb8LuhltQl4tX9FJbVu9QgBmtFGHOPKt4rmMwJWNq3m6xjFwJ7YnmD49R
+-
+  build:
+    project: ./src/dotnet-db-migrate.csproj
+    publish_nuget: false
