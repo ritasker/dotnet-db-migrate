@@ -1,13 +1,14 @@
-# Db-Migrate
+# dotnet-db-migrate
 
-[![Build status](https://ci.appveyor.com/api/projects/status/51x073rgmxhyopaf/branch/master?svg=true)](https://ci.appveyor.com/project/ritasker/db-migrate/branch/master)
-[![NuGet](https://img.shields.io/nuget/v/db-migrate.svg)](https://www.nuget.org/packages/db-migrate/)
+[![Build status](https://ci.appveyor.com/api/projects/status/51x073rgmxhyopaf/branch/master?svg=true)](https://ci.appveyor.com/project/ritasker/dotnet-db-migrate/branch/master)
+[![NuGet](https://img.shields.io/nuget/v/dotnet-db-migrate.svg)](https://www.nuget.org/packages/dotnet-db-migrate/)
+[![NuGet](https://img.shields.io/myget/ritasker/v/dotnet-db-migrate.svg)](https://www.myget.org/feed/ritasker/package/nuget/dotnet-db-migrate/)
 
 A [.NET Core Global Tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) to deploy changes to SQL databases using [DbUp](https://github.com/DbUp/DbUp).
 
 ## Installation
 
-`dotnet tool install -g db-migrate`
+`dotnet tool install -g dotnet-db-migrate`
 
 At this point you will probably have to add the global tools path to `PATH` variable.
 Global tools are installed to `%USERPROFILE%\.dotnet\tools` (Windows) or `$HOME/.dotnet/tools` (macOS/Linux).
@@ -23,7 +24,7 @@ You will need to restart your terminal.
 
 ## Usage
 
-Once installed, running `db-migrate -h` will print the following help information.
+Once installed, running `dotnet db-migrate -h` will print the following help information.
 
 ```bash
 A tool to deploy changes to SQL databases.
@@ -42,7 +43,7 @@ Options:
 
 ### Example Usage
 
-`db-migrate "Server=localhost;Port=5432;Database=northwind;User Id=postgres;Password=password;" -p postgres -s src/scripts/Postgres --ensure-db-exists`
+`dotnet db-migrate "Server=localhost;Port=5432;Database=northwind;User Id=postgres;Password=password;" -p postgres -s src/scripts/Postgres --ensure-db-exists`
 
 #### Output
 ```bash
@@ -66,5 +67,5 @@ This is an open-source project. I request your participation through issues and 
 
 ## License
 
-db-migrate is licensed under MIT. Refer to [LICENSE](https://github.com/ritasker/db-migrate/blob/master/LICENSE) for more information.
+dotnet-db-migrate is licensed under MIT. Refer to [LICENSE](https://github.com/ritasker/dotnet-db-migrate/blob/master/LICENSE) for more information.
 
