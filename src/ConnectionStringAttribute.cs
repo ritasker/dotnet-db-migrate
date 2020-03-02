@@ -1,4 +1,4 @@
-namespace db_migrate
+namespace DbMigrate
 {
     using System;
     using System.ComponentModel.DataAnnotations;

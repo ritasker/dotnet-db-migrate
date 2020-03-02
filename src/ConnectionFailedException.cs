@@ -1,4 +1,4 @@
-﻿namespace db_migrate
+﻿namespace DbMigrate
 {
     using System;
     public class ConnectionFailedException : Exception

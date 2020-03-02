@@ -1,40 +1,22 @@
-namespace db_migrate
+namespace DbMigrate
 {
     using DbUp.Engine;
     
-    using McMaster.Extensions.CommandLineUtils;
-    
     using System;
-    using System.ComponentModel.DataAnnotations;
+    using CommandLine;
+    using Migrators;
 
-    [Command(Description = "A tool to deploy changes to SQL databases.")]
-    [HelpOption("-h|--help")]
     class Program
     {
-        public static int Main(string[] args) => CommandLineApplication.Execute<Program>(args);
+        public static int Main(string[] args) => Parser.Default.ParseArguments<Options>(args)
+            .MapResult(opts => MigrateDb(opts.ConnectionString, opts.Provider, opts.EnsureDbExits, opts.Scripts),
+                _ => -1);
 
-        [Required]
-        [ConnectionString]
-        [Argument(0, Description = "Required. The connection details for a database.")]
-        private string ConnectionString { get; }
-
-        [Option(Template = "-p|--provider",
-            Description = "Optional. The connection provider. Default: mssql")]
-        [AllowedValues("mssql", "postgres", IgnoreCase = true)]
-        private string Provider { get; } = "mssql";
-
-        [Option(Template = "-s|--scripts",
-            Description = "Optional. The path to the migration scripts. Default: scripts/")]
-        private string Scripts { get; } = "scripts";
-
-        [Option(Template = "--ensure-db-exists", Description = "Optional. Create the database if it doesn't exist. Default: false")]
-        private bool EnsureDatabaseExists { get; } = false;
-
-        private int OnExecute()
+        private static int MigrateDb(string connectionString, string provider, bool ensureDbExits, string scripts)
         {
-            DbMigrator migrator = GetMigrator();
-
-            if (EnsureDatabaseExists)
+            var migrator = GetMigrator(provider, connectionString);
+            
+            if (ensureDbExits)
             {
                 migrator.EnsureDatabaseExists();
             }
@@ -43,7 +25,7 @@ namespace db_migrate
                 
             try
             {
-                result = migrator.Migrate(Scripts);
+                result = migrator.Migrate(scripts);
             }
             catch (ConnectionFailedException e)
             {
@@ -63,14 +45,14 @@ namespace db_migrate
             return 0;
         }
 
-        private DbMigrator GetMigrator()
+        private static DbMigrator GetMigrator(string provider, string connectionString)
         {
-            switch (Provider.ToLower())
+            switch (provider.ToLower())
             {
                 case "postgres":
-                    return new PostgresMigrator(ConnectionString);
+                    return new PostgresMigrator(connectionString);
                 default:
-                    return new MSSqlMigrator(ConnectionString);
+                    return new MSSqlMigrator(connectionString);
             }
         }
 
