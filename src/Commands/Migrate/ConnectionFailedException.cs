@@ -1,4 +1,4 @@
-﻿namespace DbMigrate
+﻿namespace DbMigrate.Commands.Migrate
 {
     using System;
     public class ConnectionFailedException : Exception

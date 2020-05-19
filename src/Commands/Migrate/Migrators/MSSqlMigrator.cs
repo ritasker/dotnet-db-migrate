@@ -1,24 +1,21 @@
-﻿namespace DbMigrate.Migrators
+﻿namespace DbMigrate.Commands.Migrate.Migrators
 {
+    using Migrate;
     using DbUp;
     using DbUp.Engine;
 
-    public class PostgresMigrator : DbMigrator
+    public class MSSqlMigrator : DbMigrator
     {
         private readonly string connectionString;
 
-        public PostgresMigrator(string connectionString)
+        public MSSqlMigrator(string connectionString)
         {
             this.connectionString = connectionString;
         }
-        public override void EnsureDatabaseExists()
-        {
-            EnsureDatabase.For.PostgresqlDatabase(connectionString);
-        }
 
         public override DatabaseUpgradeResult Migrate(string path)
-        {   
-            var upgrader = DeployChanges.To.PostgresqlDatabase(connectionString)
+        {
+            var upgrader = DeployChanges.To.SqlDatabase(connectionString)
                 .LogToConsole()
                 .WithScriptsFromFileSystem(path)
                 .Build();
@@ -28,6 +25,7 @@
                 throw new ConnectionFailedException(errorMessage);
             }
             
+            EnsureDatabase.For.SqlDatabase(connectionString);
             return upgrader.PerformUpgrade();
         }
     }
