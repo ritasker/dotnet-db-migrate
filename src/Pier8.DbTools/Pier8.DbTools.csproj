@@ -14,13 +14,17 @@
     <Description>A .NET Core Global Tool to deploy changes to SQL databases using DbUp.</Description>
     <PackageTags>database;migration;dbup;mssql;postgres;.net core;global tools;</PackageTags>
     <PackageProjectUrl>https://github.com/ritasker/dotnet-db-migrate</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/ritasker/dotnet-db-migrate/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageIconUrl>https://github.com/ritasker/dotnet-db-migrate/raw/master/nuget_icon.png</PackageIconUrl>
+    <PackageLicense>https://github.com/ritasker/dotnet-db-migrate/blob/master/LICENSE</PackageLicense>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="dbup-postgresql" Version="4.3.0" />
     <PackageReference Include="dbup-sqlserver" Version="4.3.1" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
 </Project>
