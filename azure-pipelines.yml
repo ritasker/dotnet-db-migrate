@@ -6,9 +6,6 @@
 trigger:
   - master
 
-variables:
-  - group: nuget
-
 pool:
   vmImage: 'ubuntu-18.04'
 
