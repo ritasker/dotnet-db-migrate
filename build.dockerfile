@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2.202-stretch AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 RUN apt-get update
 RUN apt-get -y install zip
 
