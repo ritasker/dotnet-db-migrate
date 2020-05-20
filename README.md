@@ -1,9 +1,7 @@
 # Pier 8 DB Tools
 
-[![Build status](https://ci.appveyor.com/api/projects/status/1rjkqrumqq52yfdj?svg=true)](https://ci.appveyor.com/project/ritasker/dotnet-db-migrate)
+[![Build Status](https://dev.azure.com/ritasker/Pier8.DbTools/_apis/build/status/ritasker.dotnet-db-migrate?branchName=master)](https://dev.azure.com/ritasker/Pier8.DbTools/_build/latest?definitionId=4&branchName=master)
 [![NuGet](https://img.shields.io/nuget/v/dotnet-db-migrate.svg)](https://www.nuget.org/packages/dotnet-db-migrate/)
-[![NuGet](https://img.shields.io/myget/ritasker/v/dotnet-db-migrate.svg)](https://www.myget.org/feed/ritasker/package/nuget/dotnet-db-migrate/)
-
 
 A CLI that adds and migrates database migrations for MS SQL and PostgreSQL.
 
