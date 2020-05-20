@@ -1,12 +1,15 @@
 namespace DbMigrate.Commands.Migrate
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using McMaster.Extensions.CommandLineUtils;
     using Migrators;
 
     [Command("migrate", Description = "Runs the migration scripts")]
     public class MigrateCommand
     {
+        [Required(ErrorMessage = "connection string is required.")]
+        [ConnectionString]
         [Option(Description = "The connection string for the database")]
         public string ConnectionString { get; }
         
@@ -18,37 +21,24 @@ namespace DbMigrate.Commands.Migrate
         
         public int OnExecute(IConsole console)
         {
-            var validator = new MigrateValidator();
-            var validationResult = validator.Validate(this);
-            
-            if (validationResult.IsValid)
+            try
             {
-                try
-                {
-                    var migrator = GetMigrator(Provider, ConnectionString);
-                    var result = migrator.Migrate(Scripts);
+                var migrator = GetMigrator(Provider, ConnectionString);
+                var result = migrator.Migrate(Scripts);
                     
-                    if (!result.Successful)
-                    {
-                        WriteError(console, $"{result.Error.Message} for provider {Provider}");
-                        return 1;
-                    }
-
-                    return 0;
-                }
-                catch (ConnectionFailedException e)
+                if (!result.Successful)
                 {
-                    WriteError(console, $"{e.Message} for provider {Provider}");
+                    WriteError(console, $"{result.Error.Message} for provider {Provider}");
                     return 1;
                 }
-            }
 
-            foreach (var error in validationResult.Errors)
+                return 0;
+            }
+            catch (ConnectionFailedException e)
             {
-                WriteError(console, error.ErrorMessage);
+                WriteError(console, $"{e.Message} for provider {Provider}");
+                return 1;
             }
-
-            return 1;
         }
 
         private void WriteError(IConsole console, string message)

@@ -4,7 +4,7 @@
     <PackAsTool>true</PackAsTool>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>2.0.5</Version>
+    <Version>2.0.6</Version>
     <Authors>Richard Tasker</Authors>
     <Description>A .NET Core Global Tool to deploy changes to SQL databases using DbUp.</Description>
     <PackageTags>database;migration;dbup;mssql;postgres;.net core;global tools;</PackageTags>
@@ -12,12 +12,11 @@
     <PackageLicenseUrl>https://github.com/ritasker/dotnet-db-migrate/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://github.com/ritasker/dotnet-db-migrate/raw/master/nuget_icon.png</PackageIconUrl>
     <LangVersion>latest</LangVersion>
-    <PackageVersion>2.0.5</PackageVersion>
+    <PackageVersion>2.0.6</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="dbup-postgresql" Version="4.3.0" />
     <PackageReference Include="dbup-sqlserver" Version="4.3.1" />
-    <PackageReference Include="FluentValidation" Version="8.6.2" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
   </ItemGroup>
 </Project>
