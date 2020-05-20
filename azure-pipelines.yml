@@ -9,7 +9,7 @@ trigger:
 variables:
   - group: nuget
 
-pool: 'Amazon Linux 2 Docker Dev V2'
+pool: 'ubuntu-18.04'
 
 steps:
 
@@ -17,8 +17,6 @@ steps:
       ./build.sh
     displayName: 'Run Build'
     timeoutInMinutes: 15
-    env:
-      NUGET_ACCESS_TOKEN: $(access-token)
 
   - task: PublishBuildArtifacts@1
     inputs:
