@@ -4,7 +4,7 @@ namespace Pier8.DbTools
     using Commands.Migrate;
     using McMaster.Extensions.CommandLineUtils;
 
-    [Command(Name = "db", Description = "A .NET Core Global Tool to deploy changes to SQL databases."),
+    [Command(Name = "db", Description = "A CLI that adds and migrates database migrations for MS SQL and PostgreSQL."),
      Subcommand(typeof(MigrateCommand), typeof(AddMigrationCommand))]
     class Program
     {

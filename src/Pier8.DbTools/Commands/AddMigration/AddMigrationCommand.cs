@@ -9,7 +9,7 @@ namespace Pier8.DbTools.Commands.AddMigration
     public class AddMigrationCommand
     {
         [Required]
-        [Argument(0, "Description of the migration")]
+        [Argument(0, Description = "Description of the migration")]
         public string Description { get; set; }
 
         [Option(Description = "Where to save the migration")]
@@ -24,8 +24,11 @@ namespace Pier8.DbTools.Commands.AddMigration
                 Description = Description.Replace(" ", "_");
             }
 
-            var date = DateTime.UtcNow.ToString("yyyyMMddhhmmss");
-            File.Create(Path.Combine(Output, $"{date}_{Description}.sql"));
+            var date = DateTime.UtcNow.ToString("yyyyMMddHHmm");
+            var path = Path.Combine(Output, $"{date}_{Description}.sql");
+            File.Create(path);
+
+            console.WriteLine("Added migration script {0}", path);
             return 0;
         }
     }

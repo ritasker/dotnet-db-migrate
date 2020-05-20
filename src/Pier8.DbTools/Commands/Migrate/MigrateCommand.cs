@@ -10,7 +10,7 @@ namespace Pier8.DbTools.Commands.Migrate
     {
         [Required(ErrorMessage = "connection string is required.")]
         [ConnectionString]
-        [Option(Description = "The connection string for the database")]
+        [Argument(0, Description = "The connection string for the database")]
         public string ConnectionString { get; }
         
         [Option(Description = "The path to the migration scripts.")]
@@ -34,7 +34,7 @@ namespace Pier8.DbTools.Commands.Migrate
 
                 return 0;
             }
-            catch (ConnectionFailedException e)
+            catch (MigrationFailedException e)
             {
                 WriteError(console, $"{e.Message} for provider {Provider}");
                 return 1;

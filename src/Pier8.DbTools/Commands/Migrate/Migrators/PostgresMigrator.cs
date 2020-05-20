@@ -1,5 +1,6 @@
 ﻿namespace Pier8.DbTools.Commands.Migrate.Migrators
 {
+    using System;
     using DbUp;
     using DbUp.Engine;
 
@@ -14,6 +15,15 @@
 
         public override DatabaseUpgradeResult Migrate(string path)
         {
+            try
+            {
+                EnsureDatabase.For.PostgresqlDatabase(this.connectionString);
+            }
+            catch (Exception e)
+            {
+                throw new MigrationFailedException(e.Message, e);
+            }
+            
             var upgrader = DeployChanges.To.PostgresqlDatabase(this.connectionString)
                 .LogToConsole()
                 .WithScriptsFromFileSystem(path)
@@ -21,10 +31,9 @@
 
             if (!upgrader.TryConnect(out string errorMessage))
             {
-                throw new ConnectionFailedException(errorMessage);
+                throw new MigrationFailedException(errorMessage);
             }
             
-            EnsureDatabase.For.PostgresqlDatabase(this.connectionString);
             return upgrader.PerformUpgrade();
         }
     }
