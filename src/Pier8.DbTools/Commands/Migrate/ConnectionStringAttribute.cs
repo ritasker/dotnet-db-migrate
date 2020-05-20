@@ -1,4 +1,4 @@
-namespace DbMigrate.Commands.Migrate
+namespace Pier8.DbTools.Commands.Migrate
 {
     using System;
     using System.ComponentModel.DataAnnotations;

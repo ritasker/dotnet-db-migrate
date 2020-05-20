@@ -1,4 +1,4 @@
-﻿namespace DbMigrate.Commands.Migrate.Migrators
+﻿namespace Pier8.DbTools.Commands.Migrate.Migrators
 {
     using DbUp.Engine;
 

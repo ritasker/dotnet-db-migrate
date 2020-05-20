@@ -1,6 +1,5 @@
-﻿namespace DbMigrate.Commands.Migrate.Migrators
+﻿namespace Pier8.DbTools.Commands.Migrate.Migrators
 {
-    using Migrate;
     using DbUp;
     using DbUp.Engine;
 
@@ -15,7 +14,7 @@
 
         public override DatabaseUpgradeResult Migrate(string path)
         {
-            var upgrader = DeployChanges.To.SqlDatabase(connectionString)
+            var upgrader = DeployChanges.To.SqlDatabase(this.connectionString)
                 .LogToConsole()
                 .WithScriptsFromFileSystem(path)
                 .Build();
@@ -25,7 +24,7 @@
                 throw new ConnectionFailedException(errorMessage);
             }
             
-            EnsureDatabase.For.SqlDatabase(connectionString);
+            EnsureDatabase.For.SqlDatabase(this.connectionString);
             return upgrader.PerformUpgrade();
         }
     }

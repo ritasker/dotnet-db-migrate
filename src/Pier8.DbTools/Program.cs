@@ -1,6 +1,6 @@
-namespace DbMigrate
+namespace Pier8.DbTools
 {
-    using Commands.Generate;
+    using Commands.AddMigration;
     using Commands.Migrate;
     using McMaster.Extensions.CommandLineUtils;
 

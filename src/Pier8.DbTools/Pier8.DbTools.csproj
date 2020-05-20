@@ -1,19 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <ToolCommandName>dotnet-db</ToolCommandName>
-    <PackAsTool>true</PackAsTool>
-    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>2.0.6</Version>
+    <OutputType>Exe</OutputType>
+    <LangVersion>latest</LangVersion>
+    
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>dotnet-db</ToolCommandName>
+    
+    <PackageId>dotnet-db-migrate</PackageId>
+    <Version>2.1.0</Version>
     <Authors>Richard Tasker</Authors>
+    <Company>Pier 8 Software ltd.</Company>
     <Description>A .NET Core Global Tool to deploy changes to SQL databases using DbUp.</Description>
     <PackageTags>database;migration;dbup;mssql;postgres;.net core;global tools;</PackageTags>
     <PackageProjectUrl>https://github.com/ritasker/dotnet-db-migrate</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/ritasker/dotnet-db-migrate/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://github.com/ritasker/dotnet-db-migrate/raw/master/nuget_icon.png</PackageIconUrl>
-    <LangVersion>latest</LangVersion>
-    <PackageVersion>2.0.6</PackageVersion>
   </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="dbup-postgresql" Version="4.3.0" />
     <PackageReference Include="dbup-sqlserver" Version="4.3.1" />
