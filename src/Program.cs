@@ -1,10 +1,11 @@
 namespace DbMigrate
 {
+    using Commands.Generate;
     using Commands.Migrate;
     using McMaster.Extensions.CommandLineUtils;
 
     [Command(Name = "db", Description = "A .NET Core Global Tool to deploy changes to SQL databases."),
-     Subcommand(typeof(MigrateCommand))]
+     Subcommand(typeof(MigrateCommand), typeof(AddMigrationCommand))]
     class Program
     {
         public static int Main(string[] args) => CommandLineApplication.Execute<Program>(args);

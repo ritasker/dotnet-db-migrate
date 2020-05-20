@@ -1,4 +1,4 @@
-namespace DbMigrate.Commands
+namespace DbMigrate.Commands.Migrate
 {
     using System;
     using System.Data.Common;
