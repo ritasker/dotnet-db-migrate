@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - master
+
+variables:
+  - group: nuget
+
+pool: 'Amazon Linux 2 Docker Dev V2'
+
+steps:
+
+  - script: |
+      ./build.sh
+    displayName: 'Run Build'
+    timeoutInMinutes: 15
+    env:
+      NUGET_ACCESS_TOKEN: $(access-token)
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: './artifacts'
