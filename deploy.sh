@@ -33,7 +33,7 @@ function version_compare () {
   fi
 }
 
-buildVersion=$(cat version.txt)
+buildVersion=$(cat $SYSTEM_ARTIFACTSDIRECTORY/**/version.txt)
 nugetVersion=$(get_nuget_version)
 
 echo "nuget version $nugetVersion"
