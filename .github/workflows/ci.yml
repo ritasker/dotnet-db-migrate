@@ -2,8 +2,9 @@
 
 on:
   push:
-    branches: [ $default-branch ]
-    
+    branches:
+      - master    
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,11 +17,11 @@ jobs:
           source-url: https://api.nuget.org/v3/index.json
         env:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
-      - name: Install dependencies
+      - name: Nuget Restore
         run: dotnet restore
-      - name: Build
+      - name: Build dotnet-db-migrate
         run: dotnet build --configuration Release --no-restore
-      - name: Create the package
+      - name: Package dotnet-db-migrate
         run: dotnet pack --configuration Release -o ${{GITHUB_WORKSPACE}}/artifacts
-      - name: Publish the package to Nuget
-        run: dotnet nuget push ${{GITHUB_WORKSPACE}}/artifacts/*.nupkg 
+      - name: Publish dotnet-db-migrate to Nuget
+        run: dotnet nuget push ${{GITHUB_WORKSPACE}}/artifacts/*.nupkg
