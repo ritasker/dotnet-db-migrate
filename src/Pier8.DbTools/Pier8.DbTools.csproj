@@ -7,7 +7,7 @@
     <ToolCommandName>dotnet-db</ToolCommandName>
     
     <PackageId>dotnet-db-migrate</PackageId>
-    <Version>2.2.0</Version>
+    <Version>2.2.1</Version>
     <Authors>Richard Tasker</Authors>
     <Company>Pier 8 Software ltd.</Company>
     <Description>A .NET Core Global Tool to deploy changes to SQL databases using DbUp.</Description>
@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="icon.png" Pack="true" Visible="false" PackagePath="" />
+    <None Include="icon.png" Pack="true" Visible="false" PackagePath="/" />
+    <None Include="../README.md" Pack="true" Visible="false" PackagePath="/" />
   </ItemGroup>
 </Project>
