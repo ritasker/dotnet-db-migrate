@@ -22,6 +22,6 @@ jobs:
       - name: Build dotnet-db-migrate
         run: dotnet build --configuration Release --no-restore
       - name: Package dotnet-db-migrate
-        run: dotnet pack --configuration Release -o ${{GITHUB_WORKSPACE}}/artifacts
+        run: dotnet pack --configuration Release -o $GITHUB_WORKSPACE/artifacts
       - name: Publish dotnet-db-migrate to Nuget
-        run: dotnet nuget push ${{GITHUB_WORKSPACE}}/artifacts/*.nupkg
+        run: dotnet nuget push $GITHUB_WORKSPACE/artifacts/*.nupkg
