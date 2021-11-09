@@ -1,0 +1,26 @@
+﻿name: Build and Publish db-migrate
+
+on:
+  push:
+    branches: [ $default-branch ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core SDK 6.0.x
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: '6.0.x'
+          source-url: https://api.nuget.org/v3/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Create the package
+        run: dotnet pack --configuration Release -o ${{GITHUB_WORKSPACE}}/artifacts
+      - name: Publish the package to Nuget
+        run: dotnet nuget push ${{GITHUB_WORKSPACE}}/artifacts/*.nupkg 
