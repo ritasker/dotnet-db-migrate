@@ -1,4 +1,4 @@
-﻿name: Build and Publish db-migrate
+﻿name: Build
 
 on:
   push:

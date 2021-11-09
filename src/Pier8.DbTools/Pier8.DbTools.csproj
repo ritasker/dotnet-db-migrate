@@ -7,7 +7,7 @@
     <ToolCommandName>dotnet-db</ToolCommandName>
     
     <PackageId>dotnet-db-migrate</PackageId>
-    <Version>2.2.1</Version>
+    <Version>2.2.2</Version>
     <Authors>Richard Tasker</Authors>
     <Company>Pier 8 Software ltd.</Company>
     <Description>A .NET Core Global Tool to deploy changes to SQL databases using DbUp.</Description>
@@ -15,6 +15,7 @@
     <PackageProjectUrl>https://github.com/ritasker/dotnet-db-migrate</PackageProjectUrl>
     <PackageLicense>https://github.com/ritasker/dotnet-db-migrate/blob/master/LICENSE</PackageLicense>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <TargetFrameworks>net6.0;netcoreapp3.1</TargetFrameworks>
   </PropertyGroup>
   
