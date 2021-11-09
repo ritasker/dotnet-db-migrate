@@ -14,8 +14,6 @@ jobs:
         uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: '6.0.x'
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
       - name: Nuget Restore
         run: dotnet restore
       - name: Build dotnet-db-migrate
@@ -23,4 +21,6 @@ jobs:
       - name: Package dotnet-db-migrate
         run: dotnet pack --configuration Release -o $GITHUB_WORKSPACE/artifacts
       - name: Publish dotnet-db-migrate to Nuget
-        run: dotnet nuget push $GITHUB_WORKSPACE/artifacts/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{env.NUGET_AUTH_TOKEN}}
+        run: dotnet nuget push $GITHUB_WORKSPACE/artifacts/*.nupkg -s https://api.nuget.org/v3/index.json -k $NUGET_AUTH_TOKEN
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
